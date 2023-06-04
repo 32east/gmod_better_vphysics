@@ -36,14 +36,19 @@ jobs:
         cd sourcesdk-minimal/projects/linux/gmake2
         for FILE in `find *.make -type f`
         do
-            make -f $FILE
+            make -j -f $FILE
         done
+
+    - name: Make IVP
+      run: |
+        cd ivp/projects/linux/gmake2
+        make -j -f ivp_compact_builder.make
 
     - name: Make
       run: |
         cd projects/linux/gmake2
         make -j -f interfaces.make
-        make -f vphysics.make
+        make -j -f vphysics.make
 
     - name: Make 64x
       if: env.BUILD_64x == 'true'
