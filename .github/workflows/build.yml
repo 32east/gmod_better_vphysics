@@ -5,8 +5,6 @@ on: [push, pull_request, workflow_dispatch]
 env:
   PROJECT_NAME: "vphysics"
   BUILD_64x: "true"
-  REALM: "sv"
-  FINAL_REALM: "sv"
 
 jobs:
   build-linux:
@@ -48,13 +46,13 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: gm${{env.FINAL_REALM}}_${{env.PROJECT_NAME}}_linux.dll
+        name: ${{env.PROJECT_NAME}}_linux.dll
         path: projects/linux/gmake/x86/ReleaseWithSymbols/${{env.PROJECT_NAME}}.dll
 
     - uses: actions/upload-artifact@v2
       if: env.BUILD_64x == 'true'
       with:
-        name: gm${{env.FINAL_REALM}}_${{env.PROJECT_NAME}}_linux64.dll
+        name: ${{env.PROJECT_NAME}}_linux64.dll
         path: projects/linux/gmake/x86_64/ReleaseWithSymbols/${{env.PROJECT_NAME}}.dll
   build-windows:
     runs-on: windows-2019
@@ -85,11 +83,11 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: gm${{env.FINAL_REALM}}_${{env.PROJECT_NAME}}_win.dll
+        name: ${{env.PROJECT_NAME}}_win.dll
         path: projects/windows/vs2019/x86/ReleaseWithSymbols/${{env.PROJECT_NAME}}.dll
 
     - uses: actions/upload-artifact@v2
       if: env.BUILD_64x == 'true'
       with:
-        name: gm${{env.FINAL_REALM}}_${{env.PROJECT_NAME}}_win64.dll
+        name: ${{env.PROJECT_NAME}}_win64.dll
         path: projects/windows/vs2019/x86_64/ReleaseWithSymbols/${{env.PROJECT_NAME}}.dll
