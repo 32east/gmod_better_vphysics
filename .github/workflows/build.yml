@@ -34,15 +34,15 @@ jobs:
     - name: Make
       run: |
         cd projects/linux/gmake2
-        make -f interfaces.make
-        make -f vphysics.make
+        make -j -f interfaces.make
+        make -j -f vphysics.make
 
     - name: Make 64x
       if: env.BUILD_64x == 'true'
       run: |
         cd projects/linux/gmake2
-        make -f interfaces.make config=debug_x86_64
-        make -f vphysics.make config=debug_x86_64
+        make -j -f interfaces.make config=debug_x86_64
+        make -j -f vphysics.make config=debug_x86_64
 
     - uses: actions/upload-artifact@v2
       with:
