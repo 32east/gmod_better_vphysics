@@ -41,7 +41,7 @@ jobs:
 
     - name: Make
       run: |
-        cd ../../../../projects/linux/gmake2
+        cd projects/linux/gmake2
         make -j -f interfaces.make
         make -j -f vphysics.make
 
