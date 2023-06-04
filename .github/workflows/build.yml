@@ -36,7 +36,7 @@ jobs:
         cd sourcesdk-minimal/projects/linux/gmake2
         for FILE in `find *.make -type f`
         do
-            make -j -f FILE
+            make -j -f $FILE
         done
 
     - name: Make
