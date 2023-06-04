@@ -59,7 +59,7 @@ jobs:
         name: gm${{env.FINAL_REALM}}_${{env.PROJECT_NAME}}_linux64.dll
         path: projects/linux/gmake/x86_64/ReleaseWithSymbols/gm${{env.REALM}}_${{env.PROJECT_NAME}}_linux64.dll
   build-windows:
-    runs-on: windows-2022
+    runs-on: windows-2019
     steps:
     - uses: actions/checkout@v2
     - uses: actions/checkout@v2
@@ -76,18 +76,18 @@ jobs:
 
     - name: Generate Project
       run: |
-        ./premake5.exe vs2022
+        ./premake5.exe 2019
 
     - name: Build
       run: |
-        cd projects/windows/vs2022
-        & "C:\Program Files (x86)\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=ReleaseWithSymbols /p:Platform=Win32 ${{env.PROJECT_NAME}}.sln
+        cd projects/windows/2019
+        & "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=ReleaseWithSymbols /p:Platform=Win32 ${{env.PROJECT_NAME}}.sln
 
     - name: Build 64x
       if: env.BUILD_64x == 'true'
       run: |
-        cd projects/windows/vs2022
-        & "C:\Program Files (x86)\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=ReleaseWithSymbols /p:Platform=x64 ${{env.PROJECT_NAME}}.sln
+        cd projects/windows/2019
+        & "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=ReleaseWithSymbols /p:Platform=x64 ${{env.PROJECT_NAME}}.sln
 
     - uses: actions/upload-artifact@v2
       with:
