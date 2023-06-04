@@ -45,6 +45,8 @@ jobs:
         make -f ivp_compact_builder.make
         make -f havana_constraints.make
         make -f ivp_physics.make
+        make -f hk_math.make
+        make -f hk_base.make
 
     - name: Make
       run: |
