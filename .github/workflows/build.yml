@@ -3,7 +3,7 @@ name: Build
 on: [push, pull_request, workflow_dispatch]
   
 env:
-  PROJECT_NAME: "gmod_better_vphysics"
+  PROJECT_NAME: "vphysics"
   BUILD_64x: "true"
   REALM: "sv"
   FINAL_REALM: "sv"
@@ -20,12 +20,8 @@ jobs:
         apt install -y build-essential git libstdc++6:i386 gcc-multilib g++-multilib wget
     
     - uses: actions/checkout@v3
-    - uses: actions/checkout@v3
-      with:
+        with:
         submodules: recursive
-        repository: miguelmazetto/sourcesdk-minimal-vphysics
-        ref: x86-64-branch
-        path: 'sourcesdk-minimal'
         
     - name: Install Premake
       run: |
@@ -61,13 +57,9 @@ jobs:
   build-windows:
     runs-on: windows-2019
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/checkout@v2
-      with:
+    - uses: actions/checkout@v3
+        with:
         submodules: recursive
-        repository: miguelmazetto/sourcesdk-minimal-vphysics
-        ref: x86-64-branch
-        path: 'sourcesdk-minimal'
 
     - name: Install Premake
       run: |
