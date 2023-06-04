@@ -43,6 +43,7 @@ jobs:
       run: |
         cd ivp/projects/linux/gmake2
         make -j -f ivp_compact_builder.make
+        make -j -f havana_constraints.make
 
     - name: Make
       run: |
