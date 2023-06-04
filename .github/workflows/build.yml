@@ -42,7 +42,10 @@ jobs:
     - name: Make IVP
       run: |
         cd ivp/projects/linux/gmake2
-        make -j -f ivp_physics.make
+        for FILE in `find *.make -type f`
+        do
+            make -f $FILE
+        done
 
     - name: Make
       run: |
