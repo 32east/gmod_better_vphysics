@@ -31,7 +31,7 @@ jobs:
       run: |
         premake5 gmake2
 
-    - name: Make SourceSDK
+    - name: Make
       run: |
         cd sourcesdk-minimal/projects/linux/gmake2
         for FILE in `find *.make -type f`
@@ -39,24 +39,33 @@ jobs:
             make -f $FILE
         done
 
-    - name: Make IVP
-      run: |
-        cd ivp/projects/linux/gmake2
+        cd ../../../../ivp/projects/linux/gmake2
         make -f ivp_compact_builder.make
         make -f havana_constraints.make
         make -f ivp_physics.make
         make -f hk_math.make
         make -f hk_base.make
 
-    - name: Make
-      run: |
-        cd projects/linux/gmake2
+        cd ../../../../projects/linux/gmake2
         make -j -f interfaces.make
         make -j -f vphysics.make
 
     - name: Make 64x
       if: env.BUILD_64x == 'true'
       run: |
+        cd sourcesdk-minimal/projects/linux/gmake2
+        for FILE in `find *.make -type f`
+        do
+            make -f $FILE
+        done
+
+        cd ../../../../ivp/projects/linux/gmake2
+        make -f ivp_compact_builder.make
+        make -f havana_constraints.make
+        make -f ivp_physics.make
+        make -f hk_math.make
+        make -f hk_base.make
+
         cd projects/linux/gmake2
         make -j -f interfaces.make config=debug_x86_64
         make -j -f vphysics.make config=debug_x86_64
