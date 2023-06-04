@@ -56,15 +56,15 @@ jobs:
         cd sourcesdk-minimal/projects/linux/gmake2
         for FILE in `find *.make -type f`
         do
-            make -f $FILE
+            make -f $FILE config=debug_x86_64
         done
 
         cd ../../../../ivp/projects/linux/gmake2
-        make -f ivp_compact_builder.make
-        make -f havana_constraints.make
-        make -f ivp_physics.make
-        make -f hk_math.make
-        make -f hk_base.make
+        make -f ivp_compact_builder.make config=debug_x86_64
+        make -f havana_constraints.make config=debug_x86_64
+        make -f ivp_physics.make config=debug_x86_64
+        make -f hk_math.make config=debug_x86_64
+        make -f hk_base.make config=debug_x86_64
 
         cd ../../../../projects/linux/gmake2
         make -j -f interfaces.make config=debug_x86_64
