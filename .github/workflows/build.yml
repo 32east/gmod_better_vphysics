@@ -31,9 +31,17 @@ jobs:
       run: |
         premake5 gmake2
 
+    - name: Make SourceSDK
+      run: |
+        cd sourcesdk-minimal/projects/linux/gmake2
+        for FILE in `find *.make -type f`
+        do
+            make -j -f FILE
+        done
+
     - name: Make
       run: |
-        cd projects/linux/gmake2
+        cd ../../../../projects/linux/gmake2
         make -j -f interfaces.make
         make -j -f vphysics.make
 
