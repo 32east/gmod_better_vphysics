@@ -73,13 +73,13 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: ${{env.PROJECT_NAME}}_linux.so
-        path: projects/linux/gmake/x86/ReleaseWithSymbols/${{env.PROJECT_NAME}}.so
+        path: projects/linux/gmake/x86/Debug/${{env.PROJECT_NAME}}.so
 
     - uses: actions/upload-artifact@v2
       if: env.BUILD_64x == 'true'
       with:
         name: ${{env.PROJECT_NAME}}_linux64.so
-        path: projects/linux/gmake/x86_64/ReleaseWithSymbols/${{env.PROJECT_NAME}}.so
+        path: projects/linux/gmake/x86_64/Debug/${{env.PROJECT_NAME}}.so
   build-windows:
     runs-on: windows-2019
     steps:
