@@ -65,9 +65,9 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: recursive
-        repository: danielga/garrysmod_common
-        path: 'garrysmod_common'
-        ref: x86-64-support-sourcesdk
+        repository: miguelmazetto/sourcesdk-minimal-vphysics
+        ref: x86-64-branch
+        path: 'sourcesdk-minimal'
 
     - name: Install Premake
       run: |
