@@ -70,12 +70,12 @@ jobs:
         make -j -f interfaces.make config=debug_x86_64
         make -j -f vphysics.make config=debug_x86_64
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: ${{env.PROJECT_NAME}}_linux.so
         path: projects/linux/gmake2/x86/Debug/${{env.PROJECT_NAME}}.so
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       if: env.BUILD_64x == 'true'
       with:
         name: ${{env.PROJECT_NAME}}_linux64.so
@@ -107,12 +107,12 @@ jobs:
         cd projects/windows/vs2019
         & "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=ReleaseWithSymbols /p:Platform=x64 ${{env.PROJECT_NAME}}.vcxproj
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: ${{env.PROJECT_NAME}}_win.dll
         path: projects/windows/vs2019/x86/ReleaseWithSymbols/${{env.PROJECT_NAME}}.dll
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       if: env.BUILD_64x == 'true'
       with:
         name: ${{env.PROJECT_NAME}}_win64.dll
